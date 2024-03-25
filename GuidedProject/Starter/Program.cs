@@ -132,7 +132,7 @@ static string MakeChange(int cost, int[] cashTill, int twenties, int tens = 0, i
     int changeNeeded = amountPaid - cost;
 
     if (changeNeeded < 0)
-        transactionMessage = "Not enough money provided.";
+        throw new InvalidOperationException("InvalidOperationException: Not enough money provided to complete the transaction.");
 
     Console.WriteLine("Cashier Returns:");
 
@@ -165,7 +165,7 @@ static string MakeChange(int cost, int[] cashTill, int twenties, int tens = 0, i
     }
 
     if (changeNeeded > 0)
-        transactionMessage = "Can't make change. Do you have anything smaller?";
+        throw new InvalidOperationException("InvalidOperationException: The till is unable to make the correct change.");
 
     if (transactionMessage == "")
         transactionMessage = "transaction succeeded";
